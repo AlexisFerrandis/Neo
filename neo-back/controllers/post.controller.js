@@ -6,7 +6,7 @@ module.exports.readPost = (req, res) => {
 	PostModel.find((err, data) => {
 		if (!err) res.send(data);
 		else console.log("Error to get data : " + err);
-	});
+	}).sort({ createdAt: -1 });
 };
 
 module.exports.createPost = async (req, res) => {
@@ -125,5 +125,45 @@ module.exports.commentPost = (req, res) => {
 	}
 };
 
-module.exports.editCommentPost = (req, res) => {};
-module.exports.deleteCommentPost = (req, res) => {};
+module.exports.editCommentPost = (req, res) => {
+	if (!ObjectId.isValid(req.params.id)) return res.status(400).send("ID unknown : " + req.params.id);
+
+	try {
+		return PostModel.findById(req.params.id, (err, data) => {
+			const theComment = data.comments.find((comment) => comment._id.equals(req.body.commentId));
+			if (!theComment) return res.status(404).send("Comment not found");
+			theComment.text = req.body.text;
+
+			return data.save((err) => {
+				if (!err) return res.status(200).send(data);
+				return res.status(500).send(err);
+			});
+		});
+	} catch (err) {
+		return res.status(400).send(err);
+	}
+};
+
+module.exports.deleteCommentPost = (req, res) => {
+	if (!ObjectId.isValid(req.params.id)) return res.status(400).send("ID unknown : " + req.params.id);
+
+	try {
+		return PostModel.findByIdAndUpdate(
+			req.params.id,
+			{
+				$pull: {
+					comments: {
+						_id: req.body.commentId,
+					},
+				},
+			},
+			{ new: true },
+			(err, data) => {
+				if (!err) return res.send(data);
+				else return res.status(400).send(err);
+			}
+		);
+	} catch (err) {
+		return res.status(400).send(err);
+	}
+};
