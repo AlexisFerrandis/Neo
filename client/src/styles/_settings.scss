@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	list-style-type: none;
+	outline: none;
+	text-decoration: none;
+}
+
+$color-primary: #714740;
+$color-secondary: #e8d9d3;
+$color-tertiary: #3e2923;
+$color-medium: #bf8483;
+
+//if needed
+// $color-x :#84645c;
+// $color-y :#8b6f6d;
+// $color-z :#545454;
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+.success {
+	color: green;
+	font-weight: bold;
+}
+img {
+	width: 100px;
+	object-fit: cover;
+}
