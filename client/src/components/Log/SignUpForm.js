@@ -11,6 +11,7 @@ const SignUpForm = () => {
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
+
 		const terms = document.getElementById("terms");
 		const pseudoError = document.querySelector(".pseudo.error");
 		const emailError = document.querySelector(".email.error");

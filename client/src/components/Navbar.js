@@ -14,8 +14,8 @@ const Navbar = () => {
 				<div className="logo">
 					<NavLink to="/">
 						<div className="logo">
-							<img src="./assets/logo/logo.png" alt="compagny logo" />
-							<h3>Neo</h3>
+							<img src="./assets/logo/logo.svg" alt="home" />
+							<h3>CPN NAME</h3>
 						</div>
 					</NavLink>
 				</div>
