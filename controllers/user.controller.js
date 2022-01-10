@@ -48,7 +48,6 @@ module.exports.deleteUser = async (req, res) => {
 
 module.exports.follow = async (req, res) => {
 	if (!ObjectId.isValid(req.params.id) || !ObjectId.isValid(req.body.idToFollow)) return res.status(400).send("ID unknown : " + req.params.id);
-
 	try {
 		// add to the follower list
 		await UserModel.findByIdAndUpdate(
