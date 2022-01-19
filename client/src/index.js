@@ -7,10 +7,12 @@ import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 import { getUsers } from "./actions/users.actions";
+import { getPosts } from "./actions/post.actions";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 store.dispatch(getUsers());
+store.dispatch(getPosts());
 
 ReactDOM.render(
 	<Provider store={store}>
