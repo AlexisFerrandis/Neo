@@ -11,6 +11,7 @@ const UpdateProfil = () => {
 	const [updateForm, setUpdateForm] = useState(false);
 	const userData = useSelector((state) => state.userReducer);
 	const usersData = useSelector((state) => state.usersReducer);
+	const error = useSelector((state) => state.errorReducer.userError);
 	const dispatch = useDispatch();
 
 	const [followingPopup, setFollowingPopup] = useState(false);
@@ -30,8 +31,8 @@ const UpdateProfil = () => {
 					<h3>Photo du profil</h3>
 					<img src={userData.picture} alt="user-pic" />
 					<UploadImg />
-					{/* <p>{errors.maxSize}</p>
-                    <p>{errors.format}</p> */}
+					<p>{error.maxSize}</p>
+					<p>{error.format}</p>
 				</div>
 				<div className="information-part">
 					<div className="bio-update">
