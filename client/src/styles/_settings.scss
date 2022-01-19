@@ -27,9 +27,18 @@ $color-medium: #bf8483;
 	font-weight: bold;
 }
 img {
-	width: 80px;
+	width: 40px;
 	object-fit: cover;
 	cursor: pointer;
+}
+.user-info,
+.card-left {
+	img {
+		width: 100px;
+	}
+}
+.card-pic {
+	width: 100%;
 }
 .bio-update {
 	p {
