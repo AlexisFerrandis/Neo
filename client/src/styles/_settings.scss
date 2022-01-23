@@ -40,6 +40,11 @@ img {
 .card-pic {
 	width: 100%;
 }
+.picture-part {
+	img {
+		width: 150px;
+	}
+}
 .bio-update {
 	p {
 		border: solid 1px $color-tertiary;
